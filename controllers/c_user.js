@@ -1,5 +1,6 @@
 //导入
 const m_user=require('../models/m_user')
+
 const showSignin=(req,res)=>{
     res.render('signin.html');
 };
@@ -20,12 +21,22 @@ const handleSignin=(req,res)=>{
                 code: 2,
                 message: '密码错误'
             })
+        req.session.user=data[0]
+        // console.log(req.session.user)
         res.send({
             code: 200,
             message: '可以跳转了'
         })
     })
 }
+//退出功能
+const singout=(req,res)=>{
+    delete req.session.user;
+
+    // 跳转到用户登录页
+    res.redirect('/signin');
+}
 //导出
 exports.showSignin=showSignin;
 exports.handleSignin=handleSignin;
+exports.singout=singout;
