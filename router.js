@@ -19,5 +19,15 @@ router.get('/signin',c_user.showSignin)
     .get('/signout',c_user.singout)
     //渲染话题详情页
     .get('/topic/:topicId',c_topic.showDetial)
+    //渲染话题详情编辑页
+    .get('/topic/:topicIdEdit/edit',c_topic.showTopicEdit)
+    //提交编辑信息
+    .post('/topicEdit/:editID',c_topic.topicEdit)
+    //删除信息
+    .get('/topic/:deleteTopic/delete',c_topic.delEdit)
+    //渲染注册页面
+    .get('/signup',c_user.showSingup)
+    //注册页面的实现
+    .post('/signUp',c_user.handleSingup)
 //导出路由对象
 module.exports=router;
